@@ -1,0 +1,3 @@
+[submodule "Shopper"]
+    path = Shopper
+    url = https://github.com/yosseftarek2023/Shopper.git
