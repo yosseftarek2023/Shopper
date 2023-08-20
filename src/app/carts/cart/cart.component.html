@@ -1,0 +1,54 @@
+<div class="cart-box mt-5">
+    <h1 class="text-light">Cart Contents</h1>
+    <div class="d-flex justify-content-between align-items-center  w-100">
+        <p>You Have <label class="text-warning fw-bold">{{cartProducts.length}}</label> items in your Cart</p>
+        <div class="ms-auto">
+            <span class="fw-bold btn btn-primary" (click)="clearCart(); getTotal()" >Clear Cart</span>
+        </div>
+    </div>
+    <table class="table table-striped mt-2 ">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+        </thead>
+          <tbody>
+            <tr *ngFor="let product of cartProducts; let index = index">
+                <td> <img src="{{product.item.image}}" alt=""></td>
+                <td class="fw-bold">{{product.item.title}}</td>
+                <td class="fw-bold">{{product.item.price}} L.E</td>
+                <td>
+                    <div class="quantity d-flex justify-content-between">
+                        <button class="btn btn-success fw-bold" (click)="addProd(index)">+</button>
+                        <input class="form-control mx-3" type="number" [(ngModel)]="product.quantity" (ngModelChange)="getTotal(); detectChange()" (input)="getTotal()" min="1"  >
+                        <button class="btn btn-warning fw-bold" (click)="subProd(index)">-</button>
+                    </div>
+                </td>
+                <td class="fw-bold">{{product.item.price * product.quantity }} L.E</td>
+                <td> 
+                    <button class="btn btn-danger fw-bold" (click)="deleteProd(index);getTotal()"> Delete</button> 
+                </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Total : {{total}}</th>
+                <th><button class="btn btn-success fw-bold" (click)="sendCart()">Order Now</button></th>
+            </tr>
+          </tfoot>
+      </table>
+</div>
+
+<div class="alert alert-success text-center w-50 m-auto" role="alert" *ngIf="send">
+    <strong>Order is on your way !!!</strong>
+</div>
+

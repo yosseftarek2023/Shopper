@@ -1,0 +1,20 @@
+<div class="box">
+    <div class="row">
+        <div class="col-md-5 col-sm-12">
+            <img src="{{details.image}}" class="w-100" alt="">
+        </div>
+        <div class="col-md-7 col-sm-12">
+                <div class="info">
+                    <ul class="list-unstyled">
+                        <li><strong class="fw-bold">Title : </strong> {{details.title}}  </li>
+                        <li><strong class="fw-bold">Category :</strong>  {{details.category}}</li>
+                        <li><strong class="fw-bold">Description : </strong> {{details.description}}  </li>
+                        <li><strong class="fw-bold">Rate :  </strong> {{details.rating.rate}} </li>
+                        <li><strong class="fw-bold">Count :   </strong> {{details.rating.count}} </li>
+                        <li><strong class="fw-bold">Price : </strong> {{details.price}}  </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    <app-spinner *ngIf="!details"></app-spinner>
+</div>
